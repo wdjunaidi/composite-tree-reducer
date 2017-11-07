@@ -1,7 +1,7 @@
 const {combineReducers} = require('redux');
 const _ = require('lodash');
 
-module.exports = (rootReducer, childReducers = []) => {
+module.exports = (rootReducer, childReducers = {}) => {
   if (_.isUndefined(rootReducer) || _.isNull(rootReducer)) {
     throw new Error('root reducer is expected');
   }
@@ -15,8 +15,10 @@ module.exports = (rootReducer, childReducers = []) => {
   }
 
   const combinedReducer = combineReducers(childReducers);
+  const childrenKeys = _.keys(childReducers);
 
   return (state, action) => {
-    return _.merge(rootReducer(state, action), combinedReducer(state, action));
+    const childrenState = _.pick(state, childrenKeys);
+    return Object.assign({}, rootReducer(state, action), combinedReducer(childrenState, action));
   };
 };
