@@ -2,7 +2,7 @@ const {combineReducers} = require('redux');
 const _ = require('lodash');
 
 module.exports = (rootReducer, childReducers = {}) => {
-  if (_.isUndefined(rootReducer) || _.isNull(rootReducer)) {
+  if (_.isNil(rootReducer)) {
     throw new Error('root reducer is expected');
   }
 
