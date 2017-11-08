@@ -2,7 +2,7 @@
   "name": "composite-tree-reducer",
   "version": "0.1.0",
   "description": "Simple utility to create composite tree reducer.",
-  "main": "src/compositeTreeReducer.js",
+  "main": "dist/compositeTreeReducer.js",
   "repository": "https://github.com/wdjunaidi/composite-tree-reducer.git",
   "keywords": [
     "reducer",
