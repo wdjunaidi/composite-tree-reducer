@@ -85,3 +85,61 @@ test('more complex compositeTreeReducer', () => {
         child2: {b: 'oyoy'}
     });
 });
+
+test('more complex nested compositeTreeReducer', () => {
+    const rootReducer = (state = {}, action) => {
+        switch (action.type) {
+            case 'TEST': return Object.assign({}, state, {a: state.a + 1});
+            default: return state;
+        }
+    };
+    const child1 = (state = {}, action) => {
+        switch (action.type) {
+            case 'TEST': return Object.assign({}, state, {foo: state.foo * 2});
+            default: return state;
+        }
+    };
+    const rootchild2 = (state = {}, action) => {
+        switch (action.type) {
+            case 'TEST': return Object.assign({}, state, {b: state.b + 'oy'});
+            default: return state;
+        }
+    };
+    const grandchild1 = (state = {}, action) => {
+        switch (action.type) {
+            case 'TEST': return Object.assign({}, state, {bar: state.bar - 5});
+            default: return state;
+        }
+    };
+    const grandchild2 = (state = {}, action) => {
+        switch (action.type) {
+            case 'TEST': return Object.assign({}, state, {z: state.z + 'ish'});
+            default: return state;
+        }
+    };
+
+    const reducer = compositeTreeReducer(rootReducer, {
+        child1,
+        child2: compositeTreeReducer(rootchild2, {
+            grandchild1,
+            grandchild2
+        })
+    });
+    expect(reducer({
+        a: 1, 
+        child1: {foo: 1}, 
+        child2: {
+            b: 'ah',
+            grandchild1: {bar: 3},
+            grandchild2: {z: 'null'}
+        }
+    }, {type: 'TEST'})).toMatchObject({
+        a: 2, 
+        child1: {foo: 2},
+        child2: {
+            b: 'ahoy',
+            grandchild1: {bar: -2},
+            grandchild2: {z: 'nullish'}
+        }
+    });
+});
