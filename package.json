@@ -4,12 +4,15 @@
   "description": "Simple utility to create composite tree reducer.",
   "main": "dist/compositeTreeReducer.js",
   "repository": "https://github.com/wdjunaidi/composite-tree-reducer.git",
+  "bugs": {
+    "url": "https://github.com/wdjunaidi/composite-tree-reducer/issues"
+  },
   "keywords": [
     "reducer",
     "composite",
     "tree"
   ],
-  "author": "Wirianto Djunaidi",
+  "author": "Wirianto Djunaidi <wirianto.djunaidi@gmail.com>",
   "license": "MIT",
   "scripts": {
     "test": "jest --coverage",
