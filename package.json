@@ -1,5 +1,5 @@
 {
-  "name": "composite-tree-reducer",
+  "name": "@wdjunaidi/composite-tree-reducer",
   "version": "0.1.0",
   "description": "Simple utility to create composite tree reducer.",
   "main": "dist/compositeTreeReducer.js",
