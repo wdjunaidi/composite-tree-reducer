@@ -1,6 +1,6 @@
 {
   "name": "@wdjunaidi/composite-tree-reducer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple utility to create composite tree reducer.",
   "main": "dist/compositeTreeReducer.umd.js",
   "repository": "https://github.com/wdjunaidi/composite-tree-reducer.git",
